@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = memo(({ currentPath }) => {
 
   return (
     <>
-      <CommonAppBar position="static" sx={{ backgroundColor: "black" }}>
+      <CommonAppBar position="sticky" sx={{ backgroundColor: "black" }}>
         <CommonToolBar sx={{ flexGrow: 1 }}>
           <CommonTypography variant="h6" sx={{ flexGrow: 1 }}>
             Fake Store

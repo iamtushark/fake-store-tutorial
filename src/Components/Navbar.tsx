@@ -1,5 +1,6 @@
-import React from "react";
+import React, {memo} from "react";
 import { Link } from "react-router-dom";
+
 import CommonAppBar from "./common/commonAppBar";
 import CommonTypography from "./common/CommonTypography";
 import CommonButton from "./common/CommonButtonFIeld";
@@ -9,7 +10,7 @@ interface NavbarProps {
   currentPath: string;
 }
 
-const Navbar: React.FC<NavbarProps> = React.memo(({ currentPath }) => {
+const Navbar: React.FC<NavbarProps> = memo(({ currentPath }) => {
   const isHome = currentPath === "/";
   const isCart = currentPath === "/cart";
 

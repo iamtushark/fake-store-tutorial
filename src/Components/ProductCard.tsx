@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Box,
-} from "@mui/material";
-import CommonTypography from "./common/CommonTypography";
+
 import { ProductCardProps } from "../Interfaces/ProductCardInterface";
+
 import { useCartDispatch } from "../Contexts/CartContext/CartContext";
+
+import CommonTypography from "./common/CommonTypography";
 import CommonButton from "./common/CommonButtonFIeld";
+import CommonCardMedia from "./common/commonCardMedia";
+import CommonCard from "./common/commonCard";
+import CommonCardActions from "./common/commonCardActions";
+import CommonCardContent from "./common/commonCardContent";
+import CommonBox from "./common/commonBox";
 
 const ProductCard: React.FC<ProductCardProps> = ({
   description,
@@ -35,7 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <Card
+    <CommonCard
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -44,14 +45,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
         color: "white",
       }}
     >
-      <CardMedia
+      <CommonCardMedia
         component="img"
         image={image}
         sx={{ height: 150, width: "100%", objectFit: "cover" }}
-        alt={title}
         title={title}
       />
-      <Box
+      <CommonBox
         sx={{
           flexGrow: 1,
           display: "flex",
@@ -60,7 +60,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           p: 2,
         }}
       >
-        <CardContent sx={{ flexGrow: 1 }}>
+        <CommonCardContent sx={{ flexGrow: 1 }}>
           <CommonTypography variant="h5" gutterBottom>
             {title.length > 35 ? `${title.slice(0, 35)}...` : title}
           </CommonTypography>
@@ -69,8 +69,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
               ? `${description.slice(0, 90)}...`
               : description}
           </CommonTypography>
-        </CardContent>
-        <Box
+        </CommonCardContent>
+        <CommonBox
           sx={{
             display: "flex",
             justifyContent: "space-between",
@@ -79,14 +79,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
           }}
         >
           <CommonTypography variant="h6">${price}</CommonTypography>
-          <CardActions sx={{ padding: 0 }}>
+          <CommonCardActions sx={{ padding: 0 }}>
             <CommonButton size="small" color="secondary" onClick={toggleCart}>
               {inCart ? "Remove from Cart" : "Add to Cart"}
             </CommonButton>
-          </CardActions>
-        </Box>
-      </Box>
-    </Card>
+          </CommonCardActions>
+        </CommonBox>
+      </CommonBox>
+    </CommonCard>
   );
 };
 

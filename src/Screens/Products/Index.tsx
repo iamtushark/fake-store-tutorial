@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
+
 import getProducts from "./utils/getProducts";
+
+import { useCart } from "../../Contexts/CartContext/CartContext";
+
 import ProductCardInterface from "../../Interfaces/ProductCardInterface";
 import ProductCard from "../../Components/ProductCard";
+
 import CommonCircularProgress from "../../Components/common/commonCircularProgress";
-import { useCart } from "../../Contexts/CartContext/CartContext";
-import { Box, Grid, Typography } from "@mui/material";
+import CommonBox from "../../Components/common/commonBox";
+import CommonGrid from "../../Components/common/commonGrid";
+import CommonTypography from "../../Components/common/CommonTypography";
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<ProductCardInterface[]>([]);
@@ -34,25 +40,25 @@ const Products: React.FC = () => {
 
   if (error) {
     return (
-      <Box sx={{ textAlign: "center", color: "red" }}>
-        <Typography variant="h6">{error}</Typography>
-      </Box>
+      <CommonBox sx={{ textAlign: "center", color: "red" }}>
+        <CommonTypography variant="h6">{error}</CommonTypography>
+      </CommonBox>
     );
   }
 
   return (
-    <Box sx={{ flexGrow: 1, color: "white", p: 3 }}>
-      <Grid container spacing={5}>
+    <CommonBox sx={{ flexGrow: 1, color: "white", p: 3 }}>
+      <CommonGrid container spacing={5}>
         {products.map((product) => {
           const isInCart = !!cart && !!cart[product.id];
           return (
-            <Grid item xs={12} sm={6} md={4} key={product.id}>
+            <CommonGrid item xs={12} sm={6} md={4} key={product.id}>
               <ProductCard {...product} isInCart={isInCart} />
-            </Grid>
+            </CommonGrid>
           );
         })}
-      </Grid>
-    </Box>
+      </CommonGrid>
+    </CommonBox>
   );
 };
 

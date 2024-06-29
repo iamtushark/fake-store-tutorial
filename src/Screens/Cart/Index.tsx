@@ -25,7 +25,10 @@ const CartPage: React.FC = () => {
     );
   }
 
-  const totalValue = Object.values(cart).reduce((total, item) => total + Number(item.price), 0);
+  const totalValue = Object.values(cart).reduce(
+    (total, item) => total + Number(item.price),
+    0,
+  );
   return (
     <>
       <CommonBox sx={{ flexGrow: 1, color: "white", p: 3 }}>
@@ -41,7 +44,10 @@ const CartPage: React.FC = () => {
             </CommonGrid>
           ))}
         </CommonGrid>
-        <CommonTypography variant="h5" sx={{color: "black", marginTop: "20px", textAlign: "center" }}>
+        <CommonTypography
+          variant="h5"
+          sx={{ color: "black", marginTop: "20px", textAlign: "center" }}
+        >
           Total Cart Value: ${totalValue.toFixed(2)}
         </CommonTypography>
         <CommonButton sx={{ marginTop: "10%" }} onClick={handleClearCart}>

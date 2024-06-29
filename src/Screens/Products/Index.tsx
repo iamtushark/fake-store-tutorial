@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import getProducts from './utils/getProducts';
-import ProductCardInterface from '../../Interfaces/ProductCardInterface';
-import ProductCard from '../../Components/ProductCard';
-import CommonCircularProgress from '../../Components/common/commonCircularProgress';
-import { useCart } from '../../Contexts/CartContext/CartContext';
-import { Box, Grid, Typography } from '@mui/material';
+import React, { useEffect, useState } from "react";
+import getProducts from "./utils/getProducts";
+import ProductCardInterface from "../../Interfaces/ProductCardInterface";
+import ProductCard from "../../Components/ProductCard";
+import CommonCircularProgress from "../../Components/common/commonCircularProgress";
+import { useCart } from "../../Contexts/CartContext/CartContext";
+import { Box, Grid, Typography } from "@mui/material";
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<ProductCardInterface[]>([]);
@@ -19,7 +19,7 @@ const Products: React.FC = () => {
         setProducts(data);
         setError(null);
       } catch (error) {
-        setError('Failed to fetch products');
+        setError("Failed to fetch products");
       } finally {
         setLoading(false);
       }
@@ -34,14 +34,14 @@ const Products: React.FC = () => {
 
   if (error) {
     return (
-      <Box sx={{ textAlign: 'center', color: 'red' }}>
+      <Box sx={{ textAlign: "center", color: "red" }}>
         <Typography variant="h6">{error}</Typography>
       </Box>
     );
   }
 
   return (
-    <Box sx={{ flexGrow: 1, color: 'white', p: 3 }}>
+    <Box sx={{ flexGrow: 1, color: "white", p: 3 }}>
       <Grid container spacing={5}>
         {products.map((product) => {
           const isInCart = !!cart && !!cart[product.id];

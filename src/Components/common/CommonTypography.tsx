@@ -7,7 +7,7 @@ interface ServiceDetailsTypographyProps {
   variant: TypographyProps["variant"];
 }
 
-const CommonTypographyHeading: React.FC<ServiceDetailsTypographyProps> = ({
+const CommonTypography: React.FC<ServiceDetailsTypographyProps> = ({
   children,
   variant,
 }) => (
@@ -16,4 +16,4 @@ const CommonTypographyHeading: React.FC<ServiceDetailsTypographyProps> = ({
   </Typography>
 );
 
-export default CommonTypographyHeading;
+export default CommonTypography;

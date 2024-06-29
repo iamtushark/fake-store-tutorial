@@ -1,52 +1,52 @@
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+import React, { useState } from 'react';
+import { Card, CardActions, CardContent, CardMedia, Button, Box } from '@mui/material';
 import CommonTypography from './common/CommonTypography';
-import ProductCardInterface, {ProductCardProps} from '../Interfaces/ProductCardInterface';
-import { useState } from 'react';
+import { ProductCardProps } from '../Interfaces/ProductCardInterface';
 import { useCartDispatch } from '../Contexts/CartContext/CartContext';
+import CommonButton from './common/CommonButtonFIeld';
 
+const ProductCard: React.FC<ProductCardProps> = ({ description, image, price, title, id, isInCart }) => {
+  const [inCart, setInCart] = useState<boolean>(isInCart);
+  const cartDispatch = useCartDispatch();
 
-export default function ProductCard({ description, image, price, title, id, isInCart }: ProductCardProps) {
-	const [inCart, setInCart] = useState<boolean>(isInCart);
-	const cartDispatch = useCartDispatch();
+  const toggleCart = () => {
+    if (inCart) {
+      cartDispatch({ type: 'removed', id });
+    } else {
+      cartDispatch({ type: 'added', item: { id, title, description, image, price } });
+    }
+    setInCart(!inCart);
+  };
 
-	const toggleCart = () => {
-		if (inCart) {
-			cartDispatch && cartDispatch({ type: 'removed', id });
-		} else {
-			cartDispatch && cartDispatch({ type: 'added', item: { id, title, description, image, price } });
-		}
-		setInCart(!inCart);
-	};
+  return (
+    <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%', bgcolor: 'grey', color: 'white' }}>
+      <CardMedia
+        component="img"
+        image={image}
+        sx={{ height: 150, width: '100%', objectFit: 'cover' }}
+        alt={title}
+        title={title}
+      />
+      <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', p: 2 }}>
+        <CardContent sx={{ flexGrow: 1 }}>
+          <CommonTypography variant="h5" gutterBottom>
+            {title.length > 35 ? `${title.slice(0, 35)}...` : title}
+          </CommonTypography>
+          <CommonTypography variant="body2" gutterBottom>
+            {description.length > 90 ? `${description.slice(0, 90)}...` : description}
+          </CommonTypography>
+        </CardContent>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
+          <CommonTypography variant="h6">${price}</CommonTypography>
+          <CardActions sx={{ padding: 0 }}>
+            <CommonButton size="small" color="secondary" onClick={toggleCart}>
+              {inCart ? 'Remove from Cart' : 'Add to Cart'}
+            </CommonButton>
+          </CardActions>
+        </Box>
+      </Box>
+    </Card>
+  );
+};
 
-	return (
-		<Card sx={{ display: 'flex', alignItems: 'center', padding: 2 }}>
-			<CardMedia
-				component="img"
-				image={image}
-				sx={{ height: 150, width: 150, marginRight: 2 }}
-				alt={title}
-				title={title}
-			/>
-			<div style={{ flexGrow: 1 }}>
-				<CardContent sx={{ padding: 0 }}>
-					<CommonTypography variant="h5">
-						{title.length > 35 ? `${title.slice(0, 35)}...` : title}
-					</CommonTypography>
-					<CommonTypography variant="h6">${price}</CommonTypography>
-					<CommonTypography variant="body2">
-						{description.length > 90 ? `${description.slice(0, 90)}...` : description}
-					</CommonTypography>
-				</CardContent>
-				<CardActions sx={{ padding: 0, justifyContent: 'flex-end' }}>
-					<Button size="small" color="secondary" onClick={toggleCart}>
-					{inCart ? 'Remove from Cart' : 'Add to Cart'}
-					</Button>
-				</CardActions>
-			</div>
-		</Card>
-	);
-}
+export default ProductCard;

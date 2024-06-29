@@ -32,9 +32,10 @@ function cartReducer(cart: CartItemInterface, action: CartAction): CartItemInter
   }
 }
 
-// Contexts
-const CartContext = createContext<CartItemInterface | null>(null);
-const CartDispatchContext = createContext<React.Dispatch<CartAction> | null>(null);
+// TODO: needs to have the indexedDB value by default.
+// Initial thoughts : Could use useLayoutEffect but concerned about performance.
+const CartContext = createContext<CartItemInterface>(initialCart);
+const CartDispatchContext = createContext<React.Dispatch<CartAction>>(()=>{});
 
 export function CartProvider({ children }: CartProviderProps) {
   const [cart, dispatch] = useReducer(cartReducer, initialCart);

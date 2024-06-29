@@ -1,17 +1,33 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, BrowserRouter, Routes, useLocation } from 'react-router-dom';
 import Products from './Screens/Products/Index';
+import CartPage from './Screens/Cart/Index';
+import Navbar from './Components/Navbar';
 import { CartProvider } from './Contexts/CartContext/CartContext';
 
-const Routing = () => {
+// TODO: issue here, solved by gpt by creating another component
+
+const App = () => {
   return (
     <CartProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Products />} />
-        </Routes>
+        <Routing />
       </BrowserRouter>
     </CartProvider>
   );
 };
 
-export default Routing;
+const Routing = () => {
+  const location = useLocation();
+
+  return (
+    <>
+      <Navbar currentPath={location.pathname} />
+      <Routes>
+        <Route path="/" element={<Products />} />
+        <Route path="/cart" element={<CartPage />} />
+      </Routes>
+    </>
+  );
+};
+
+export default App;

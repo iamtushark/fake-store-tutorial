@@ -1,7 +1,7 @@
 import React from "react";
-import { CircularProgress, CircularProgressProps } from "@mui/material";
+import CircularProgress, { CircularProgressProps } from "@mui/material/CircularProgress";
 
-interface CommonCircularProgressProps extends CircularProgressProps {}
+interface CommonCircularProgressProps extends CircularProgressProps { }
 
 const CommonCircularProgress: React.FC<CommonCircularProgressProps> = (
   props,

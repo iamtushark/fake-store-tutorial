@@ -21,16 +21,22 @@ const CartPage: React.FC = () => {
   };
 
   if (Object.keys(cart).length === 0) {
-    return (<>
-      <CommonBox sx={{ textAlign: "center", marginTop: "20px" }}>
-        <CommonTypography variant="h4" sx={{ color: "black", marginTop: "20px", textAlign: "center" }}>Your cart is empty.</CommonTypography>
-        <CommonButton>
-          <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-            Shop Now
-          </Link>
-        </CommonButton>
-      </CommonBox>
-    </>
+    return (
+      <>
+        <CommonBox sx={{ textAlign: "center", marginTop: "20px" }}>
+          <CommonTypography
+            variant="h4"
+            sx={{ color: "black", marginTop: "20px", textAlign: "center" }}
+          >
+            Your cart is empty.
+          </CommonTypography>
+          <CommonButton>
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              Shop Now
+            </Link>
+          </CommonButton>
+        </CommonBox>
+      </>
     );
   }
 

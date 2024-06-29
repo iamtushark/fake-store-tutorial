@@ -35,7 +35,18 @@ const Products: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <CommonCircularProgress sx={{ color: "black", marginTop: "20px", textAlign: "center" }}/>;
+    return (
+      <CommonBox
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CommonCircularProgress size={80} sx={{ color: "black" }} />
+      </CommonBox>
+    );
   }
 
   if (error) {

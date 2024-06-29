@@ -80,7 +80,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         >
           <CommonTypography variant="h6">${price}</CommonTypography>
           <CommonCardActions sx={{ padding: 0 }}>
-            <CommonButton size="small" color="secondary" onClick={toggleCart}>
+            <CommonButton size="small" color={inCart? "error" : "primary"} onClick={toggleCart}>
               {inCart ? "Remove from Cart" : "Add to Cart"}
             </CommonButton>
           </CommonCardActions>

@@ -35,7 +35,7 @@ const Products: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <CommonCircularProgress />;
+    return <CommonCircularProgress sx={{ color: "black", marginTop: "20px", textAlign: "center" }}/>;
   }
 
   if (error) {

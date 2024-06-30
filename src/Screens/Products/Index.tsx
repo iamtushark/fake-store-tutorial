@@ -58,12 +58,12 @@ const Products: React.FC = () => {
   }
 
   return (
-    <CommonBox sx={{ flexGrow: 1, color: "white", p: 3 }}>
-      <CommonGrid container spacing={5}>
+    <CommonBox sx={{ flexGrow: 1, color: "black", p: 3 }}>
+      <CommonGrid container spacing={2} sx={{color: "black"}}>
         {products.map((product) => {
           const isInCart = !!cart && !!cart[product.id];
           return (
-            <CommonGrid item xs={12} sm={6} md={4} key={product.id}>
+            <CommonGrid item xs={12} key={product.id}>
               <ProductCard {...product} isInCart={isInCart} />
             </CommonGrid>
           );

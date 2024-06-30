@@ -39,52 +39,55 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <CommonCard
       sx={{
         display: "flex",
-        flexDirection: "column",
-        height: "100%",
-        bgcolor: "grey",
-        color: "white",
+        flexDirection: "row",
+        bgcolor: "white",
+        color: "black",
+        p: 2,
+        mb: 2,
+        alignItems: "center",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        borderRadius: "8px",
       }}
     >
       <CommonCardMedia
         component="img"
         image={image}
-        sx={{ height: 150, width: "100%", objectFit: "cover" }}
+        sx={{
+          height: 150,
+          width: 150,
+          objectFit: "contain",
+          borderRadius: "8px",
+          marginRight: 2,
+        }}
         title={title}
       />
       <CommonBox
         sx={{
-          flexGrow: 1,
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          p: 2,
+          width: "100%",
+          p: 1,
         }}
       >
-        <CommonCardContent sx={{ flexGrow: 1 }}>
-          <CommonTypography variant="h5" gutterBottom>
-            {title.length > 35 ? `${title.slice(0, 35)}...` : title}
+        <CommonCardContent sx={{ flexGrow: 1, padding: 0 }}>
+          <CommonTypography variant="h6" gutterBottom noWrap>
+            {title.length > 80 ? `${title.slice(0, 80)}...` : title}
           </CommonTypography>
-          <CommonTypography variant="body2" gutterBottom>
+          <CommonTypography variant="body2" color="textSecondary" noWrap>
             {description.length > 90
               ? `${description.slice(0, 90)}...`
               : description}
           </CommonTypography>
+          <CommonTypography variant="h6" sx={{ mt: 1 }}>
+            ${price}
+          </CommonTypography>
         </CommonCardContent>
-        <CommonBox
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            mt: 2,
-          }}
-        >
-          <CommonTypography variant="h6">${price}</CommonTypography>
-          <CommonCardActions sx={{ padding: 0 }}>
-            <CommonButton size="small" color={inCart? "error" : "primary"} onClick={toggleCart}>
-              {inCart ? "Remove from Cart" : "Add to Cart"}
-            </CommonButton>
-          </CommonCardActions>
-        </CommonBox>
+        <CommonCardActions sx={{ padding: 0, mt: 2 }}>
+          <CommonButton size="small" color={inCart ? "error" : "primary"} onClick={toggleCart}>
+            {inCart ? "Remove from Cart" : "Add to Cart"}
+          </CommonButton>
+        </CommonCardActions>
       </CommonBox>
     </CommonCard>
   );

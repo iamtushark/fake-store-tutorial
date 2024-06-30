@@ -47,9 +47,9 @@ const CartPage: React.FC = () => {
   return (
     <>
       <CommonBox sx={{ flexGrow: 1, color: "white", p: 3 }}>
-        <CommonGrid container spacing={5}>
+        <CommonGrid container spacing={2}>
           {Object.entries(cart).map(([key, item]) => (
-            <CommonGrid item xs={12} sm={6} md={4} key={Number(key)}>
+            <CommonGrid item xs={12} key={Number(key)}>
               <ProductCard
                 key={key}
                 id={Number(key)}

@@ -39,7 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <CommonCard
       sx={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: { xs: "column", sm: "row" },
         bgcolor: "white",
         color: "black",
         p: 2,
@@ -51,12 +51,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
     >
       <CommonBox
         sx={{
-          height: 150,
-          width: 150,
+          height: { xs: 200, sm: 150 },
+          width: { xs: "100%", sm: 150 },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          marginRight: 2,
+          marginBottom: { xs: 2, sm: 0 },
+          marginRight: { sm: 2 },
         }}
       >
         <CommonCardMedia

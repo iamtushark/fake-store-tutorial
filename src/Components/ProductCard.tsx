@@ -49,18 +49,28 @@ const ProductCard: React.FC<ProductCardProps> = ({
         borderRadius: "8px",
       }}
     >
-      <CommonCardMedia
-        component="img"
-        image={image}
+      <CommonBox
         sx={{
           height: 150,
           width: 150,
-          objectFit: "contain",
-          borderRadius: "8px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           marginRight: 2,
         }}
-        title={title}
-      />
+      >
+        <CommonCardMedia
+          component="img"
+          image={image}
+          sx={{
+            maxHeight: "100%",
+            maxWidth: "100%",
+            objectFit: "contain",
+            borderRadius: "8px",
+          }}
+          title={title}
+        />
+      </CommonBox>
       <CommonBox
         sx={{
           display: "flex",
